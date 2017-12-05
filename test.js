@@ -56,7 +56,7 @@ if (options.all || options.sc === 1) {
 
                 emailInput.submit();
                 driver.findElement(webdriver.By.xpath('//div[contains(@class, "alert alert-danger")][contains(.,"Errors while logging") or contains(.,"Wystąpił błąd podczas logowania")]')).then(alert => {
-                    if (!options.all) screenshot('1.1.png').desktop();
+
                     assert(true, true);
                 });
 
@@ -75,7 +75,7 @@ if (options.all || options.sc === 1) {
                 emailInput.submit();
 
                 driver.findElement(webdriver.By.xpath('//div[contains(@class, "alert alert-danger")][contains(.,"Errors while logging") or contains(.,"Wystąpił błąd podczas logowania")]')).then(() => {
-                    if (!options.all) screenshot('1.2.png').desktop();
+
                     assert(true, true);
                 });
             });
@@ -96,7 +96,7 @@ if (options.all || options.sc === 1) {
                     assert(url, "localhost:8000/user");
                 });
                 driver.findElements(webdriver.By.xpath('//a[@href[contains(.,"/user/account/logout")] and contains(.,"Wyloguj")]')).then(elems => {
-                    if (!options.all) screenshot('1.3.png').desktop();
+
                     assert(Array.from(elems).length, 1);
                 });
             });
@@ -126,7 +126,7 @@ if (options.all || options.sc === 2) {
 
                 driver.findElements(webdriver.By.xpath('//div[@class="col-lg-12"]/table/tbody/tr')).then(items => {
                     assert(items.length, 20);
-                    if (!options.all) screenshot('2.4.png').desktop();
+
                 });
             });
         }
@@ -135,13 +135,13 @@ if (options.all || options.sc === 2) {
                 driver.findElement(webdriver.By.xpath('//*[@id="userpanel-navigation"]/div[1]/div/a[@href[contains(.,"/admin")] and contains(.,"Admin Panel")]')).click();
                 driver.findElement(webdriver.By.xpath('//*[@id="top-navigation"]/ul/li[4]/a[@href[contains(.,"/admin/products")] and contains(.,"Products")]')).click();
 
-                if (!options.all) { screenshot('2.5.png').desktop(); }
                 driver.findElements(webdriver.By.xpath('//div[@class="col-lg-12"]/table/tbody/tr/td')).then(elems => {
+
                     Array.from(elems).forEach(function(element) {
                         element.getAttribute('innerHTML').then(text => {
                             assert.notEqual(text, "");
                         });
-                    });
+                    }, this);
                 });
             });
         }
@@ -158,7 +158,7 @@ if (options.all || options.sc === 2) {
                 });
                 driver.findElements(webdriver.By.xpath('//ul[@class="pagination"]/li/a[text()="3"]')).then(elems => {
                     assert(Array.from(elems).length, 2);
-                    if (!options.all) screenshot('2.6.png').desktop();
+
                 });
             });
         }
@@ -229,7 +229,7 @@ describe('Products', function() {
 
                 input.submit().then(() => {
                     assert(driver.findElements(webdriver.By.xpath('//div[@style[contains(.,"display: block;")]]/div/div/div/h4[contains(.,"Category error")]')).then(elems => Array.from(elems).length), 1);
-                    if (!options.all) screenshot('3.7.png').desktop();
+
                 });
             });
         }
@@ -271,7 +271,7 @@ describe('Products', function() {
                     quantityButton.submit().then(() =>
                         driver.findElement(webdriver.By.xpath('//div[contains(@class, "alert alert-danger")][contains(.,"Errors while adding product") or contains(.,"Wystąpiły błędy podczas dodawania produktu.")]')).then(alert => {
                             assert(true, true);
-                            if (!options.all) screenshot('3.8.png').desktop();
+
                         })
                     )
                 });
@@ -323,7 +323,7 @@ describe('Products', function() {
                     driver.findElements(webdriver.By.xpath('//ul[@class="pagination"]/li/a')).then(elems => {
                         elems[Array.from(elems).length - 2].click().then(() => {
                             assert(driver.findElements(webdriver.By.xpath('//h4[contains(.,"' + name + '")]')).then(elems => Array.from(elems).length), 1);
-                            if (!options.all) screenshot('3.9.png').desktop();
+
                         });
                     });
 
@@ -381,7 +381,6 @@ describe('Products', function() {
 
                         // driver.findElements(webdriver.By.xpath('//ul[@class="pagination"]/li/a')).then(elems => {
                         //     elems[Array.from(elems).length - 2].click().then(() => {
-                        if (!options.all) screenshot('3.10.png').desktop();
                         assert(driver.findElements(webdriver.By.xpath('//h4[contains(.,' + name + ')]')).then(elems => Array.from(elems).length), 1);
                         // })
                         // })
@@ -432,7 +431,6 @@ describe('Products', function() {
                     driver.findElement(webdriver.By.name('long_description[pl]')).sendKeys(longDescription);
 
                     input.submit().then(() => {
-                        if (!options.all) screenshot('3.11.png').desktop();
                         driver.findElement(webdriver.By.xpath('//div[contains(@class, "alert alert-danger")][contains(.,"Errors while adding product") or contains(.,"Wystąpiły błędy podczas dodawania produktu.")]')).then(alert => {
                             assert(true, true);
                         })
@@ -464,7 +462,6 @@ describe('Products', function() {
                                     for (var i = 0; i < sortedArray.length - 1; i++) {
                                         assert(sortedArray[i] < sortedArray[i + 1], true);
                                     }
-                                    if (!options.all) screenshot('3.12.png').desktop();
                                 });
                             }, this);
                         });
