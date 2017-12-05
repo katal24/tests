@@ -135,14 +135,14 @@ if (options.all || options.sc === 2) {
                 driver.findElement(webdriver.By.xpath('//*[@id="userpanel-navigation"]/div[1]/div/a[@href[contains(.,"/admin")] and contains(.,"Admin Panel")]')).click();
                 driver.findElement(webdriver.By.xpath('//*[@id="top-navigation"]/ul/li[4]/a[@href[contains(.,"/admin/products")] and contains(.,"Products")]')).click();
 
+                if (!options.all) { screenshot('2.5.png').desktop(); }
                 driver.findElements(webdriver.By.xpath('//div[@class="col-lg-12"]/table/tbody/tr/td')).then(elems => {
                     Array.from(elems).forEach(function(element) {
                         element.getAttribute('innerHTML').then(text => {
                             assert.notEqual(text, "");
                         });
-                    }, this);
+                    });
                 });
-                if (!options.all) screenshot('2.5.png').desktop();
             });
         }
         if (options.all || options.tc === 6) {
