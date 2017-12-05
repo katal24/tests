@@ -1,0 +1,26 @@
+{
+  "lockfileVersion": 1,
+  "name": "tests",
+  "version": "1.0.0",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/katal24/tests.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/katal24/tests/issues"
+  },
+  "homepage": "https://github.com/katal24/tests#readme",
+  "description": "",
+  "dependencies": {
+    "command-line-args": "^4.0.7",
+    "mysql": "^2.15.0",
+    "node-screenshot": "^0.1.1",
+    "selenium-webdriver": "^3.6.0"
+  }
+}
